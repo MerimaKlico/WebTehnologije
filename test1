@@ -1,0 +1,86 @@
+<?php
+
+$idvijesti = $_GET['vijest'];
+
+$veza = new PDO('mysql:host=localhost;dbname=wt8;charset=utf8', 'wt8user', 'wt8pass');
+$veza->exec("set names utf8");
+$upit = $veza->prepare("SELECT * FROM komentar WHERE vijest=?");
+$upit->bindValue(1, $idvijesti, PDO::PARAM_INT);
+$upit->execute();
+
+foreach ($upit->fetchAll() as $komentar)
+    print $komentar["tekst"] . "," . $komentar["autor"] . "," . $komentar["vrijeme"] ."\n";
+?>
+
+
+print "{ \"komentari\": " . json_encode($upit->fetchAll()) . "}";
+
+
+<?php
+function zag() {
+    header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
+    header('Content-Type: text/html');
+    header('Access-Control-Allow-Origin: *');
+}
+function rest_get($request, $data) { }
+function rest_post($request, $data) { }
+function rest_delete($request) { }
+function rest_put($request, $data) { }
+function rest_error($request) { }
+
+$method  = $_SERVER['REQUEST_METHOD'];
+$request = $_SERVER['REQUEST_URI'];
+
+switch($method) {
+    case 'PUT':
+        parse_str(file_get_contents('php://input'), $put_vars);
+        zag(); $data = $put_vars; rest_put($request, $data); break;
+    case 'POST':
+        zag(); $data = $_POST; rest_post($request, $data); break;
+    case 'GET':
+        zag(); $data = $_GET; rest_get($request, $data); break;
+    case 'DELETE':
+        zag(); rest_delete($request); break;
+    default:
+        header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+        rest_error($request); break;
+}
+?>
+
+
+<?php
+session_start(); // Starting Session
+$error=''; // Variable To Store Error Message
+if (isset($_POST['submit'])) {
+    if (empty($_POST['user']) || empty($_POST['pass'])) {
+        $error = "Username ili Password nije validan";
+    }
+    else
+    {
+// Define $username and $password
+        $username=$_POST['user'];
+        $password=$_POST['pass'];
+// Establishing Connection with Server by passing server_name, user_id and password as a parameter
+//$connection = mysql_connect("localhost", "root", "");
+        $veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+        $veza->exec("set names utf8");
+// To protect MySQL injection for Security purpose
+        $username = stripslashes($username);
+        $password = stripslashes($password);
+//$username = mysql_real_escape_string($username);
+//$password = mysql_real_escape_string($password);
+// Selecting Database
+//$db = mysql_select_db("company", $connection);
+// SQL query to fetch information of registerd users and finds user match.
+        $query = $veza->query("select * from korisnici where password='$password' AND username='$username'");
+        $rows = $query->rowCount();
+        if ($rows == 1) {
+            $_SESSION['login_user']=$username; // Initializing Session
+           header("location: Pocetna6spirala.php"); // Redirecting To Other Page
+        } else {
+            $error = "Username or Password is invalid";
+        }
+        $veza=null; // Closing Connection
+    }
+}
+?>
