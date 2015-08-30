@@ -1,0 +1,81 @@
+        <p id="kontakt">
+            Muzej književnosti i pozorišne umjetnosti BiH <br>
+            Sime Milutinovića Sarajlije 7 <br>
+            71 000 Sarajevo <br>
+            Tel/fax: + 387 33 201 861
+        </p>
+
+        <br>
+        <h4> Pošalji poruku: </h4>
+
+<form method="get" name='contactform' id='contactform' class='tabela'>
+<table>
+
+<tr>
+<td> Ime*: </td> 
+<td class="unos"> <input type="text" name="firstName" id="firstName"> 
+<div id="firstNameErr" name="firstNameErr" class='greskeForme'></div> </td>
+</tr>
+
+<tr>
+<td> Prezime*: </td>
+<td class="unos"> <input type="text" name="lastName" id="lastName"> 
+<div id="lastNameErr"  name="lastNameErr" class='greskeForme'> </div> </td>
+</tr>
+
+<tr>
+<td> Mjesto*: </td>
+<td class="unos">
+<input list="mjesta" name="mjesto" id="mjesto">
+    <datalist id="mjesta">
+    <option value="Sarajevo">
+    <option value="Banjaluka">
+    <option value="Mostar">
+    <option value="Tuzla">
+    <option value="Bihać">
+    </datalist>
+<div id='greskaOpcinaMjesto' name="greskaOpcinaMjesto" class='greskeForme'></div> </td>
+</td>
+</tr>
+
+ <tr>
+<td> Općina*: </td>
+<td class="unos"> <input type="text" name="opcina" id="opcina"> 
+<div id='greskaOpcinaMjesto' name="greskaOpcinaMjesto" class='greskeForme'> </div> </td>
+</tr>
+
+<tr>
+<td> Datum rođenja: </td>
+<td class="unos"> <input type="date" name="datum" id="datum" min="1910-01-01" max="2010-01-01">
+</td>
+</tr>
+
+<tr>
+<td> Email: </td>
+<td class="unos"> <input type="text" name="email" id="email"> 
+<div id="emailErr" name="emailErr" class='greskeForme'> </div> </td>
+</tr>
+
+<tr>
+<td> Potvrdite email: </td>
+<td class="unos"> <input type="text" name="email2" id="email2"> 
+<div id="email2Err"  name="email2Err" class='greskeForme'>  </div> </td>
+</tr>
+
+<tr>
+<td> Broj telefona: </td>
+<td class="unos"> <input type="text" name="tel" id="tel"> 
+<div id="telErr" name="telErr" class='greskeForme'> </div> </td>
+</tr>
+
+<tr id='redPoruka'>
+<td> Poruka*: </td>
+<td class="unos"> <textarea rows='5' cols='50' id="message" name="message"> </textarea>
+<div id="messageErr" name="messageErr" class='greskeForme'> </div> </td>
+</tr>
+
+</table>
+<br><br>
+
+<input type="button" value="Pošalji" onclick="posalji()">
+</form>
