@@ -1,0 +1,31 @@
+Stranica proizvoda
+
+<br>
+<table id="tabelaProizvoda">
+
+	<thead>
+	<tr>
+	<td> Id </td> <td> Naziv </td> <td> Opis </td> <td> Cijena</td> <td>Izbriši </td> 
+	</tr> 
+	</thead>
+	<tbody id="tabelaProizvodaBody">
+	</tbody>
+	
+</table>
+<br> <br>
+<h4>Ubacite proizvod:</h4>
+Naziv: <input type="text" id="naziv"> <br>
+Cijena: <input type="text" id="cijena"> <br>
+Opis: <input type="text" id="opis"> <br>
+<button onclick="ubaciProizvod()"> Ubaci proizvod</button>
+<br><div id="greskaKodUbaciProizvod"> </div>
+<h4>Izmijenite proizvod:</h4>
+
+Id: <input type="text" id="idIzmijeni"> <br>
+Naziv: <input type="text" id="nazivIzmijeni"> <br>
+Cijena: <input type="text" id="cijenaIzmijeni"> <br>
+Opis: <input type="text" id="opisIzmijeni"> <br>
+<button onclick="izmijeniProizvod()"> Izmijeni proizvod</button>
+
+<br></br>
+<div id="greskaKodIzmijeniProizvod"> </div>
