@@ -18,8 +18,7 @@ function zag() {
     header('Access-Control-Allow-Origin: *');
 }
 function rest_get($request, $data) {
-	
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$upit = $veza->prepare("SELECT * FROM komentari");
 	//$upit->bindValue(1, $data['vijest'], PDO::PARAM_INT);
 	$upit->execute();
@@ -39,7 +38,7 @@ function rest_post($request, $data) {
 	if(empty($tekst) || $tekst=="") { $valid=false; echo "Niste unijeli komentar. "; }
 	
 	if($valid==true) {
-		$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+		$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('INSERT INTO komentari SET  vijest= ?, tekst= ?,autor= ?, email=?');
 	$stmt->execute( array($data["vijest"], $tekst, $data["autor"], $email) );
 	
@@ -53,13 +52,13 @@ function rest_post($request, $data) {
 }
 function rest_delete($request, $data) { 
 
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('DELETE FROM komentari WHERE id =?');
 	$stmt->execute( array($data['id']) );
 	//$stmt->execute( array($request['id']) );
 }
 function rest_put($request, $data) { 
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('UPDATE komentari SET vijest=?,tekst=?, autor=? WHERE id=?');
 	$stmt->execute( array($data['vijest'],$data['tekst'],$data['autor'],$data['id']) );
 }

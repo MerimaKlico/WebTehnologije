@@ -8,7 +8,7 @@ function zag() {
 }
 function rest_get($request, $data) {
 	
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$upit = $veza->prepare("SELECT * FROM vijest");
 	$upit->bindValue(1, PDO::PARAM_INT);
 	$upit->execute();

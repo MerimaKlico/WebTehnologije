@@ -18,7 +18,7 @@ function zag() {
 }
 function rest_get($request, $data) {
 	
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$upit = $veza->prepare("SELECT * FROM korisnici WHERE admin=1");
 	//$upit->bindValue(1, PDO::PARAM_INT);
 	$upit->execute();
@@ -37,7 +37,7 @@ function rest_post($request, $data) {
 
 	else {
 		
-		$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+		$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 		$veza->exec("set names utf8");
 		
 		ob_start();
@@ -61,13 +61,13 @@ function rest_post($request, $data) {
 }
 function rest_delete($request, $data) { 
 
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('DELETE FROM korisnici WHERE id =?');
 	$stmt->execute( array($data['id']) );
 	//$stmt->execute( array($request['id']) );
 }
 function rest_put($request, $data) { 
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('UPDATE korisnici SET vijest=?,tekst=?, autor=? WHERE id=?');
 	$stmt->execute( array($data['vijest'],$data['tekst'],$data['autor'],$data['id']) );
 }

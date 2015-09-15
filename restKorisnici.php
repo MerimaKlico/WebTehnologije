@@ -18,7 +18,7 @@ function zag() {
 }
 function rest_get($request, $data) {
 	
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$upit = $veza->prepare("SELECT * FROM korisnici WHERE admin=1");
 	//$upit->bindValue(1, PDO::PARAM_INT);
 	$upit->execute();
@@ -38,7 +38,7 @@ function rest_post($request, $data) {
 		
 		if($x==true) {
 		
-		$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+		$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 		$veza->exec("set names utf8");
 		
 		ob_start();
@@ -83,7 +83,7 @@ function rest_post($request, $data) {
 
 	if($x==true) {
 		
-		$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+		$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 		$veza->exec("set names utf8");
 		
 		ob_start();
@@ -122,7 +122,7 @@ function rest_post($request, $data) {
 function rest_delete($request, $data) { 
 	
 	if (isset($_SESSION["admin"])) {
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
 	$stmt = $veza->prepare('DELETE FROM korisnici WHERE username =?');
 	$stmt->execute( array($data['id']) );
 	}
@@ -133,7 +133,7 @@ function rest_put($request, $data) {
 		if(isset($_SESSION["admin"]))
 {
 	$username=$data["username"];
-	$veza = new PDO("mysql:dbname=muzej;host=localhost;charset=utf8", "muzejuser", "sifra");
+	$veza = new PDO("mysql:dbname=muzej;host=127.11.9.2;charset=utf8", "admin1wEiG81", "6a9P3aHl74rY");
     $veza->exec("set names utf8");
 			
 	$password=$email="";
