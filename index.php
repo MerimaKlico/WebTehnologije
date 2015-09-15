@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="stil.css">
+	<script type="text/javascript" src="javaskripta.js"></script>
     <title>Pocetna</title>
  
 </head>
-<body>
+<body onload="dajBrojKomentara(); dajPocetnuStranicu();">
 
-<?php session_start(); ?>
     <div id="okvir">
 
         <div id="masthead">
@@ -21,16 +22,8 @@
             <div class="topbanner"> <h1>Muzej kulture i pozorišne umjetnosti</h1>  </div>
 
             <ul id="registration">
-			<?php if(!isset($_SESSION['korisnik'])) {?>
-                <li class="loginout"> <a href="adminPanel.php" class="login"> Admin panel </a> </li>
-                <li class="loginout"> <a href="login.html" class="login"> Log in </a></li>
-                <li class="loginout"> <a href="registrujKorisnika.html" class="login"> Registruj se </a></li>
-			<?php } else  if(isset($_SESSION['korisnik'])) {?>
-				<form method="POST" action="logout.php">
-				<button name="logout" value="Logout">Logout</button>
-				</form>
-			<?php }?>
-			</ul>
+                
+            </ul>
 
 
             <div class="navigation">
@@ -38,9 +31,9 @@
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li>
-                            <a href="Omuzeju.html">O muzeju</a>
+                            <a href="#" onclick="prikaziOMuzeju()">O muzeju</a>
                             <ul>
-                                <li><a href="#">Edit</a></li>
+                                <li><a href="#" onclick="prikaziProizvodi()">Proizvodi</a></li>
                                 <li><a href="#">Save</a></li>
                                 <li>
                                     <a href="#">Web Design</a>
@@ -52,9 +45,9 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="Poveznice.html">Poveznice</a>
+                            <a href="#" onclick="prikaziPoveznice()">Poveznice</a>
                         </li>
-                        <li><a href="Kontakt.php">Kontakt</a></li>
+                        <li><a href="#" onclick="prikaziKontakt()">Kontakt</a></li>
                     </ul>
                 </nav>
             </div>
@@ -63,11 +56,10 @@
         </div>
 
         <div class="spacer"></div>
-		
-		<div id="sadrzaj">
-		<?php include('dohvatiNovosti.php'); ?>
-		</div>
-    
+
+        <div id="sadrzaj">
+        </div>
+		  
         <div id="column_adverts">
 
             <div class="advert">
@@ -92,6 +84,6 @@
         </div>
         
     </div>
-    <script type="text/javascript" src="javaskripta.js"></script>
+  
 </body>
 </html>

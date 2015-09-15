@@ -1,11 +1,28 @@
 <?php		
 
-if(isset($_POST['button_pressed']))
+function zag() {
+    header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
+    header('Content-Type: text/html');
+    header('Access-Control-Allow-Origin: *');
+}
+
+function rest_post($request, $data)
 {
-	include('dobijPodatke.php');
+	//include('dobijPodatke.php');
 	//require_once('PHPMailer_5.2.0/class.phpmailer.php');
 	//include("PHPMailer_5.2.0/class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
 	require 'PHPMailer/PHPMailerAutoload.php';
+	
+	$ime=$prezime=$mjesto=$opcina=$email=$tel=$datum=$poruka="";
+	$ime=$data["firstName"];
+	$prezime=$data["lastName"];
+	$mjesto=$data["mjesto"];
+	$opcina=$data["opcina"];
+	$email=$data["email"];
+	$tel=$data["tel"];
+	$datum=$data["datum"];
+	$poruka=$data["message"];
+	
 	$mail = new PHPMailer();
 
 	$mail->ContentType = 'text/plain'; 
@@ -14,8 +31,8 @@ if(isset($_POST['button_pressed']))
 	$body = "Podaci sa kontakt forme \r\nIme: " .$ime. "\r\nPrezime: ". $prezime. 
 			"\r\nMjesto: " .$mjesto. "\r\nOpcina: ".$opcina. 
 			"\r\nEmail: " .$email. "\r\nTelefon: ".$tel.
-			"\r\nDatum rođenja: " .$datum. "\r\nStudent: " .$student.
-			"\r\nFakultet: " .$fakultet. "\r\nPoruka: " .$poruka;
+			"\r\nDatum rođenja: " .$datum. "\r\nPoruka: " .$poruka;
+			
 	$mail->IsSMTP(); // telling the class to use SMTP
 	//$mail->Host       = "mail.yourdomain.com"; // SMTP server
 	$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
@@ -46,5 +63,26 @@ if(isset($_POST['button_pressed']))
 		echo "Zahvaljujemo se što ste nas kontaktirali";
 		}
 }
+
+function rest_error($request) { }
+
+$method  = $_SERVER['REQUEST_METHOD'];
+$request = $_SERVER['REQUEST_URI'];
+
+switch($method) {
+    case 'PUT':
+        parse_str(file_get_contents('php://input'), $put_vars);
+        zag(); $data = $put_vars; rest_put($request, $data); break;
+    case 'POST':
+        zag(); $data = $_POST; rest_post($request, $data); break;
+    case 'GET':
+    	zag(); $data = $_GET; rest_get($request, $data); break;
+    case 'DELETE':
+       parse_str(file_get_contents('php://input'), $delete_vars);
+       zag(); $data = $delete_vars; rest_delete($request, $data); break;
+    default:
+        header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+        rest_error($request); break;
+}
 		
-		?>
+?>

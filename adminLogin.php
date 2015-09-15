@@ -29,8 +29,10 @@ else {
 		while ($row = $korisnik_query->fetch()) {
 				if($row['password']===$password){
 					if ($row['admin']==1) {
+						  $valid=true;
 						  $_SESSION['admin'] = $username;
-						  header('Location:adminPanel.php');
+						  echo $valid;
+						  //header('Location:adminPanel.php');
 								}
 							else //if ($row['admin']===0)
 							{

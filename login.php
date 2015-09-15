@@ -26,7 +26,7 @@ else {
     while ($row = $korisnik_query->fetch()) {
     if($row['password']===$password){
       $_SESSION['korisnik'] = $username;
-	  header('Location:index.php');
+	  echo $username;
 			}
     }
   }

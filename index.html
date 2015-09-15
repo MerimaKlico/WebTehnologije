@@ -5,10 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="stil.css">
+	<script type="text/javascript" src="javaskripta.js"></script>
     <title>Pocetna</title>
  
 </head>
-<body>
+<body onload="dajNovosti();">
 
     <div id="okvir">
 
@@ -31,9 +32,9 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li>
-                            <a href="Omuzeju.html">O muzeju</a>
+                            <a href="#" onclick="prikaziOMuzeju()">O muzeju</a>
                             <ul>
-                                <li><a href="#">Edit</a></li>
+                                <li><a href="#" onclick="prikaziProizvodi()">Proizvodi</a></li>
                                 <li><a href="#">Save</a></li>
                                 <li>
                                     <a href="#">Web Design</a>
@@ -45,9 +46,9 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="Poveznice.html">Poveznice</a>
+                            <a href="#" onclick="prikaziPoveznice()">Poveznice</a>
                         </li>
-                        <li><a href="Kontakt.php">Kontakt</a></li>
+                        <li><a href="#" onclick="prikaziKontakt()">Kontakt</a></li>
                     </ul>
                 </nav>
             </div>
@@ -56,11 +57,10 @@
         </div>
 
         <div class="spacer"></div>
-		
-		<div id="clanci">
-		<?php echo "test"; include('dohvatiNovosti.php'); echo "Test"; ?>
-		</div>
-    
+
+        <div id="sadrzaj">
+        </div>
+		  
         <div id="column_adverts">
 
             <div class="advert">
@@ -85,6 +85,6 @@
         </div>
         
     </div>
-    <script type="text/javascript" src="javaskripta.js"></script>
+  
 </body>
 </html>

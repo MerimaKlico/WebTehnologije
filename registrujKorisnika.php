@@ -3,7 +3,7 @@ session_start();
 function test_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
-            $data = htmlspecialchars($data, ENT_QUOTES, "UTF-8");
+            //$data = htmlspecialchars($data, ENT_QUOTES, "UTF-8");
             return $data; }
 			
 function isValidEmail($email){ 
@@ -17,11 +17,11 @@ if (isset($_POST['username'])) $username=test_input($_POST['username']);
 if (isset($_POST['password'])) $password=test_input($_POST['password']);
 if(isset($_SESSION['admin'])) if (isset($_POST['email']))  $email=test_input($_POST['email']);
 
-if(empty($username) || empty($password)) { $x=false; echo "<br>Prazan username ili password"; }
+if(empty($username) || empty($password)) { $x=false; echo "Prazan username ili password"; }
 if(isset($_SESSION['admin'])) 
 {
-	if(empty($email)) { $x=false; echo "<br>Prazan email"; }
-	if(!isValidEmail($email)) { $x=false; echo "<br>Email nije validan"; }
+	if(empty($email)) { $x=false; echo "Prazan email"; }
+	if(!isValidEmail($email)) { $x=false; echo "Email nije validan"; }
 }
 
 if($x==true) {
@@ -40,7 +40,8 @@ if($x==true) {
         $brojac = $brojac +1;
     }
     if($brojac != 0){
-      echo "Korisnik sa tim imenom postoji";
+		print "Korisnik sa tim imenom postoji";
+    
     }	 
 	  
     else if ($brojac==0){
@@ -74,7 +75,6 @@ if($x==true) {
 			else {
 				$_SESSION['korisnik']= $username;
 				echo "Uspješna registracija";
-				header('Location:index.php');
 			}
 		}
 		

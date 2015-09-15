@@ -1,66 +1,3 @@
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="stil.css">
-    <title>Kontakt</title>
-
-</head>
-<body>
-
-<?php
-include('phpskripta.php');
-?>
-
-    <div id="masthead">
-
-
-            <h1> <img src="Screenshot_2.png" alt="MuzejLogo" />  </h1>
-
-            <div class="topbanner"> <h1>Muzej kulture i pozorišne umjetnosti</h1>  </div>
-
-            <ul id="registration">
-                <li class="loginout"> <a href="#" class="login"> Admin panel </a> </li>
-                <li class="loginout"> <a href="#" class="login"> Log in </a></li>
-                <li class="loginout"> <a href="#" class="login"> Registruj se </a></li>
-            </ul>
-
-
-            <div class="navigation">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li>
-                            <a href="Omuzeju.html">O muzeju</a>
-                            <ul>
-                                <li><a href="#">Edit</a></li>
-                                <li><a href="#">Save</a></li>
-                                <li>
-                                    <a href="#">Web Design</a>
-                                    <ul>
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="Poveznice.html">Poveznice</a>
-                        </li>
-                        <li><a href="Kontakt.html">Kontakt</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-
-        </div>
-
-        <div class="spacer"></div>
-
-    <div id="sadrzaj">
-
         <p id="kontakt">
             Muzej književnosti i pozorišne umjetnosti BiH <br>
             Sime Milutinovića Sarajlije 7 <br>
@@ -71,97 +8,73 @@ include('phpskripta.php');
         <br>
         <h4> Pošalji poruku: </h4>
 
-        <form method='get' name='contactform' id='contactform'>
-            <table>
+<form method="get" name='contactform' id='contactform' class='tabela'>
+<table>
 
-                <tr>
-                    <td> Ime*: </td>
-                    <td class="unos"> <input type="text" name="ime" 
-					value = "<?php if isset($_REQUEST['ime']) print $_REQUEST['ime']; ?>"> 
-					<div id='greskaIme' name='greskaIme' class='greskeForme'> <?php if isset($_REQUEST['greskaIme']) print $_REQUEST['greskaIme']; ?> </div></td>
-                </tr>
+<tr>
+<td> Ime*: </td> 
+<td class="unos"> <input type="text" name="firstName" id="firstName"> 
+<div id="firstNameErr" name="firstNameErr" class='greskeForme'></div> </td>
+</tr>
 
-                <tr>
-                    <td> Prezime*: </td>
-                    <td class="unos"> <input type="text" name="prezime"> <div id='greskaPrezime' class='greskeForme'></div> </td>
-                </tr>
+<tr>
+<td> Prezime*: </td>
+<td class="unos"> <input type="text" name="lastName" id="lastName"> 
+<div id="lastNameErr"  name="lastNameErr" class='greskeForme'> </div> </td>
+</tr>
 
-                <tr>
-                    <td> Mjesto: </td>
-                    <td class="unos">
-                        <input list="mjesta" name="mjesto" id="mjesto">
-                        <datalist id="mjesta">
-                            <option value="Sarajevo">
-                            <option value="Banjaluka">
-                            <option value="Mostar">
-                            <option value="Tuzla">
-                            <option value="Bihać">
-                        </datalist>
+<tr>
+<td> Mjesto*: </td>
+<td class="unos">
+<input list="mjesta" name="mjesto" id="mjesto">
+    <datalist id="mjesta">
+    <option value="Sarajevo">
+    <option value="Banjaluka">
+    <option value="Mostar">
+    <option value="Tuzla">
+    <option value="Bihać">
+    </datalist>
+<div id='greskaOpcinaMjesto' name="greskaOpcinaMjesto" class='greskeForme'></div> </td>
+</td>
+</tr>
 
+ <tr>
+<td> Općina*: </td>
+<td class="unos"> <input type="text" name="opcina" id="opcina"> 
+<div id='greskaOpcinaMjesto' name="greskaOpcinaMjesto" class='greskeForme'> </div> </td>
+</tr>
 
-                    </td>
-                </tr>
+<tr>
+<td> Datum rođenja: </td>
+<td class="unos"> <input type="date" name="datum" id="datum" min="1910-01-01" max="2010-01-01">
+</td>
+</tr>
 
+<tr>
+<td> Email: </td>
+<td class="unos"> <input type="text" name="email" id="email"> 
+<div id="emailErr" name="emailErr" class='greskeForme'> </div> </td>
+</tr>
 
-                <tr>
-                    <td> Općina: </td>
-                    <td class="unos"> <input type="text" name="opcina" id="opcina"> <div id='greskaOpcinaMjesto' class='greskeForme'></div> </td>
-                </tr>
+<tr>
+<td> Potvrdite email: </td>
+<td class="unos"> <input type="text" name="email2" id="email2"> 
+<div id="email2Err"  name="email2Err" class='greskeForme'>  </div> </td>
+</tr>
 
-                <tr>
-                    <td> E-mail: </td>
-                    <td class="unos"> <input type="text" name="email"> <div id='greskaEmail' class='greskeForme'></div> </td>
-                </tr>
+<tr>
+<td> Broj telefona: </td>
+<td class="unos"> <input type="text" name="tel" id="tel"> 
+<div id="telErr" name="telErr" class='greskeForme'> </div> </td>
+</tr>
 
-                <tr>
-                    <td> Broj telefona: </td>
-                    <td class="unos"> <input type="tel" name="tel" id="tel"> <div id='greskaTelefon' class='greskeForme'></div> </td>
-                </tr>
+<tr id='redPoruka'>
+<td> Poruka*: </td>
+<td class="unos"> <textarea rows='5' cols='50' id="message" name="message"> </textarea>
+<div id="messageErr" name="messageErr" class='greskeForme'> </div> </td>
+</tr>
 
-                <tr>
-                    <td> Datum rođenja: </td>
-                    <td class="unos"> <input type="date" name="datum" id="datum"> <div id='greskaDatumRodjenja' class='greskeForme'></div> </td>
-                </tr>
+</table>
 
-
-                <tr>
-                    <td> Da li ste student Univerziteta u Sarajevu: </td>
-                    <td class="unos">
-                        <input type="radio" name="UNSA" value="Da" onclick="prikazuj()"> Da
-                        <input type="radio" name="UNSA" value="Ne" onclick="nePrikazuj()"> Ne
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td> Ako je odgovor na prethodno pitanje potvrdan, na kojem fakultetu studirate?  </td>
-                    <td class="unos">
-
-                        <select name="fakultet" disabled>
-                            <option value="etf">Elektrotehnički</option>
-                            <option value="pmf">Prirodno-matematički</option>
-                            <option value="ef">Ekonomski</option>
-                            <option value="mf">Mašinski</option>
-                            <option value="gf">Građevinski</option>
-                            <option value="af">Arhitektonski</option>
-                        </select>
-
-                    </td>
-                </tr>
-
-                <tr id='redPoruka'>
-                    <td> Poruka*: </td>
-                    <td class="unos"> <textarea rows='5' cols='50' name="poruka"> </textarea> <div id='greskaPoruka' class='greskeForme'></div> </td>
-                </tr>
-
-            </table>
-
-            <br> <br>
-            <input type="submit" value="Pošalji">
-
-        </form>
-
-    </div>
-    <script type="text/javascript" src="javaskripta.js"></script>
-</body>
-</html>
+<input type="button" value="Pošalji" onclick="posalji()">
+</form>

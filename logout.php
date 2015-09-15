@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_POST['logout'])){
+if($_SERVER["REQUEST_METHOD"]=="GET"){
 	
 	if(isset($_SESSION['admin']))
 	{
@@ -15,6 +15,6 @@ if(isset($_POST['logout'])){
 		unset($_SESSION['korisnik']);
 	}
      
-     header("location:index.php");
+     //header("location:index.php");
   }
 ?>
